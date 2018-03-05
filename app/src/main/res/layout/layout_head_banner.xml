@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="130dp"
+              android:background="@color/background_up"
+    >
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager_headBanner"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="#ff0"
+        />
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/text_18"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="轮播图标题"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        />
+</FrameLayout>
