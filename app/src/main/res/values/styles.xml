@@ -8,4 +8,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="style_base">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="width_weight_1">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="image_1">
+        <item name="android:layout_width">57dp</item>
+        <item name="android:layout_height">57dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+    <style name="text_18b" parent="style_base">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="text_18" parent="style_base">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="text_13" parent="style_base">
+        <item name="android:textSize">13sp</item>
+    </style>
+
 </resources>
