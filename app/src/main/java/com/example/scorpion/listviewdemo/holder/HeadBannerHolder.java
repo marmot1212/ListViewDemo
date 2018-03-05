@@ -137,7 +137,6 @@ public class HeadBannerHolder {
     }
 
     private void setAdapterOnItemClickListener() {
-        // TODO: 2018/3/6 ImageAdapter 添加监听事件接口
         mImageAdapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
             @Override
             public void setOnItemClick(View view, int position) {

@@ -24,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        // TODO: 2018/3/6 ButterKnife使用
 
         initView();
         initData();
