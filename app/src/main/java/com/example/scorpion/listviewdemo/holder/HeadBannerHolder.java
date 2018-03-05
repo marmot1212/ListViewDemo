@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.scorpion.listviewdemo.adapter.ImageAdapter;
 import com.example.scorpion.listviewdemo.R;
@@ -94,7 +95,7 @@ public class HeadBannerHolder {
         setListener();
         mViewPager.setAdapter(mImageAdapter);
         // 初始化mViewPager
-        mViewPager.setCurrentItem(0);
+        mViewPager.setCurrentItem(-2);
         mTvTitle.setText(mStringArr[0]);
         // 启动自动轮播
         mHandler.sendEmptyMessageDelayed(MESSAGE_REFRESH, DELAY_TIME);
@@ -137,6 +138,12 @@ public class HeadBannerHolder {
 
     private void setAdapterOnItemClickListener() {
         // TODO: 2018/3/6 ImageAdapter 添加监听事件接口
+        mImageAdapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
+            @Override
+            public void setOnItemClick(View view, int position) {
+                Toast.makeText(mContext, "第"+position+"个轮播图片被点击。", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

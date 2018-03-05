@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -29,6 +30,15 @@ public class ImageAdapter extends PagerAdapter {
             imageView.setImageResource(picIds[i]);
             mList.add(imageView);
         }
+    }
+
+    public interface OnItemClickListener{
+        void setOnItemClick(View view, int position);
+    }
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -60,7 +70,7 @@ public class ImageAdapter extends PagerAdapter {
      */
     public void destroyItem(ViewGroup container, int position, Object object) {
 //        super.destroyItem(container, position, object);
-        container.removeView((View)object);
+//        container.removeView((View)object);
     }
 
     @Override
@@ -68,8 +78,29 @@ public class ImageAdapter extends PagerAdapter {
      *在指定位置创建页面
      */
     public Object instantiateItem(ViewGroup container, int position) {
+        // 处理position，使之位于 mList元素索引范围内
+        position %= mList.size();
+        if (position < 0) {
+            position += mList.size();
+        }
+
         ImageView imageView = mList.get(position % mList.size());
+        // 移除 上一个view
+        ViewParent vp = imageView.getParent();
+        if (vp != null) {
+            ViewGroup parent = (ViewGroup) vp;
+            parent.removeView(imageView);
+        }
         container.addView(imageView);
+
+        final int temp = position;
+         // 设置监听事件
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.setOnItemClick(v, temp);
+            }
+        });
         return imageView;
     }
 }
