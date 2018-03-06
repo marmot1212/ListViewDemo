@@ -5,7 +5,7 @@
               android:background="@color/background_up"
     >
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager_headBanner"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="#ff0"

@@ -1,12 +1,11 @@
 package com.example.scorpion.listviewdemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 
 import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
-import com.example.scorpion.listviewdemo.bean.CookShow;
 import com.example.scorpion.listviewdemo.bean.HeadBanner;
 import com.example.scorpion.listviewdemo.holder.HeadBannerHolder;
 
@@ -14,9 +13,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
-    private ListView mListView;
+    @BindView(R.id.listView)
+    ListView mListView;
     private int[] imgArr04;
     private HomeAdapter mAdapter;
 
@@ -24,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        // TODO: 2018/3/6 ButterKnife使用
+        ButterKnife.bind(this);
 
         initView();
         initData();
@@ -32,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initData() {
         imgArr04 = new int[]{R.drawable.ad1, R.drawable.ad2, R.drawable.ad3, R.drawable.ad4};
-        Log.i("main", TAG+", imgArr04 = "+ Arrays.toString(imgArr04));
+        Log.i("main", TAG + ", imgArr04 = " + Arrays.toString(imgArr04));
         // TODO : 数据ArrayList —— 适配器HomeAdapter —— 控件封装实体类ViewHolder——控件复用
 
         addHeadBannerToListView();
@@ -56,7 +59,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mListView = (ListView) findViewById(R.id.listView);
         mAdapter = new HomeAdapter();
         mListView.setAdapter(mAdapter);
     }
