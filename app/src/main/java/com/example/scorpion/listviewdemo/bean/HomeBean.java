@@ -5,4 +5,22 @@ package com.example.scorpion.listviewdemo.bean;
  */
 
 public class HomeBean {
+    private ItemType mItemType;
+    private String mTagTitle;
+
+    public ItemType getItemType() {
+        return mItemType;
+    }
+
+    public void setItemType(ItemType itemType) {
+        mItemType = itemType;
+    }
+
+    public String getTagTitle() {
+        return mTagTitle;
+    }
+
+    public void setTagTitle(String tagTitle) {
+        mTagTitle = tagTitle;
+    }
 }

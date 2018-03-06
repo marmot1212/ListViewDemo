@@ -4,9 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
+import com.example.scorpion.listviewdemo.bean.HomeBean;
+import com.example.scorpion.listviewdemo.bean.ItemType;
 import com.example.scorpion.listviewdemo.holder.HeadBannerHolder;
 
 import java.util.ArrayList;
@@ -22,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
     ListView mListView;
     private int[] imgArr04;
     private HomeAdapter mAdapter;
+    private List<HomeBean> mList;
+    private RelativeLayout mRelativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +37,57 @@ public class HomeActivity extends AppCompatActivity {
 
         initData();
         initView();
+
+        setListener();
+    }
+
+    private void setListener() {
+
+        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                Log.i("main", TAG+", onScrollStateChanged, scrollState = "+scrollState);
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                Log.i("main", TAG+", onScroll, firstVisibleItem = "+firstVisibleItem+", visibleItemCount ="
+                        +visibleItemCount+", totalItemCount"+totalItemCount);
+                if (firstVisibleItem >= 1) {
+                    mRelativeLayout.setVisibility(View.VISIBLE);
+                } else {
+                    mRelativeLayout.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     private void initData() {
         imgArr04 = new int[]{R.drawable.ad1, R.drawable.ad2, R.drawable.ad3, R.drawable.ad4};
-        Log.i("main", TAG + ", imgArr04 = " + Arrays.toString(imgArr04));
-        // TODO : 数据ArrayList —— 适配器HomeAdapter —— 控件封装实体类ViewHolder——控件复用
+        mList = new ArrayList<>();
+
+        // SIGN_MALL 签到和商城
+        HomeBean signMallBean = new HomeBean();
+        signMallBean.setItemType(ItemType.SIGN_MALL);
+        mList.add(signMallBean);
+
+        // tag01：专辑推荐
+        HomeBean tagBean = new HomeBean();
+        tagBean.setItemType(ItemType.TAG);
+        tagBean.setTagTitle("专辑推荐");
+        mList.add(tagBean);
+
+        // tag02 精选菜谱
+        HomeBean tagBean03 = new HomeBean();
+        tagBean03.setItemType(ItemType.TAG);
+        tagBean03.setTagTitle("精选菜谱");
+        mList.add(tagBean03);
+
+        // tag03 美食达人
+        HomeBean tagBean04 = new HomeBean();
+        tagBean04.setItemType(ItemType.TAG);
+        tagBean04.setTagTitle("美食达人");
+        mList.add(tagBean04);
 
         addHeadBannerToListView();
         addSearchBarToListView();
@@ -59,7 +110,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mAdapter = new HomeAdapter();
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.search_bar);
+        mAdapter = new HomeAdapter(this, mList);
         mListView.setAdapter(mAdapter);
     }
 }
