@@ -3,10 +3,10 @@ package com.example.scorpion.listviewdemo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
-import com.example.scorpion.listviewdemo.bean.HeadBanner;
 import com.example.scorpion.listviewdemo.holder.HeadBannerHolder;
 
 import java.util.ArrayList;
@@ -29,8 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        initView();
         initData();
+        initView();
     }
 
     private void initData() {
@@ -39,17 +39,17 @@ public class HomeActivity extends AppCompatActivity {
         // TODO : 数据ArrayList —— 适配器HomeAdapter —— 控件封装实体类ViewHolder——控件复用
 
         addHeadBannerToListView();
+        addSearchBarToListView();
+    }
+
+    private void addSearchBarToListView() {
+        View view = View.inflate(this, R.layout.layout_search_bar, null);
+        mListView.addHeaderView(view);
     }
 
     private void addHeadBannerToListView() {
         // 数据
-        List<HeadBanner> list = new ArrayList<>();
         String[] titleArr = new String[]{"第1个轮播图", "第二个轮播图", "第3个轮播图", "第四个轮播图"};
-        for(int i=0; i<imgArr04.length; i++) {
-            HeadBanner banner = new HeadBanner(imgArr04[i],titleArr[i]);
-            list.add(banner);
-        }
-
 
         // holder 实例化
         HeadBannerHolder holder = new HeadBannerHolder(this, imgArr04, titleArr);

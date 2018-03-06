@@ -16,5 +16,6 @@
         android:layout_gravity="bottom|center_horizontal"
         android:text="轮播图标题"
         android:layout_marginBottom="@dimen/spacing_normal"
+        android:textColor="@color/orange"
         />
 </FrameLayout>
