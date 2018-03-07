@@ -1,17 +1,21 @@
 package com.example.scorpion.listviewdemo.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
 import com.example.scorpion.listviewdemo.holder.AdHolder;
 import com.example.scorpion.listviewdemo.holder.BoutiqueHolder;
+import com.example.scorpion.listviewdemo.holder.CookShowHolder;
 import com.example.scorpion.listviewdemo.holder.GourmetHolder;
 import com.example.scorpion.listviewdemo.holder.RecipeHolder;
 import com.example.scorpion.listviewdemo.holder.TagHolder;
@@ -79,6 +83,7 @@ public class HomeAdapter extends BaseAdapter {
         BoutiqueHolder boutiqueHolder;
         AdHolder adHolder;
         RecipeHolder recipeHolder;
+        CookShowHolder cookShowHolder;
         GourmetHolder gourmetHolder;
 
         /**
@@ -131,14 +136,24 @@ public class HomeAdapter extends BaseAdapter {
                 recipeHolder.refreshUI(bean);
                 break;
             case COOK_SHOW:
+                if (convertView == null) {
+                    convertView = inflater.inflate(R.layout.layout_cook_show, null);
+                    cookShowHolder = new CookShowHolder(mContext, convertView);
+                    convertView.setTag(cookShowHolder);
+                } else {
+                    cookShowHolder = (CookShowHolder) convertView.getTag();
+                }
+                cookShowHolder.setViewPager(bean);
                 break;
             case GOURMET:
                 if (convertView == null) {
                     convertView = inflater.inflate(R.layout.layout_gourmet, null);
                     gourmetHolder = new GourmetHolder(mContext, convertView);
                     convertView.setTag(gourmetHolder);
+                    Log.i("main", "convertView == null, ");
                 } else {
                     gourmetHolder = (GourmetHolder) convertView.getTag();
+                    Log.i("main", "convertView 1= null, ");
                 }
                 gourmetHolder.initAdapter(bean);
                 break;

@@ -13,6 +13,7 @@ public class HomeBean {
     private Recipe[] mRecipeArr;
     private int[] mAdPicIds;
     private List<Gourmet> mGourmetList;
+    private List<CookShow> mCookShowList;
 
 
     public ItemType getItemType() {
@@ -61,5 +62,13 @@ public class HomeBean {
 
     public void setGourmetList(List<Gourmet> gourmetList) {
         mGourmetList = gourmetList;
+    }
+
+    public List<CookShow> getCookShowList() {
+        return mCookShowList;
+    }
+
+    public void setCookShowList(List<CookShow> cookShowList) {
+        mCookShowList = cookShowList;
     }
 }

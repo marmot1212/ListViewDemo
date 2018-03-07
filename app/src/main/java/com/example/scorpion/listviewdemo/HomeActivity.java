@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
 import com.example.scorpion.listviewdemo.bean.Boutique;
+import com.example.scorpion.listviewdemo.bean.CookShow;
 import com.example.scorpion.listviewdemo.bean.Gourmet;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
 import com.example.scorpion.listviewdemo.bean.ItemType;
@@ -110,6 +111,9 @@ public class HomeActivity extends AppCompatActivity {
         adBean2.setAdPicIds(imgArr11);
         mList.add(adBean2);
 
+        // 佳肴轮播模块
+        getDataForCookShow();
+
         // tag03 美食达人
         HomeBean tagBean04 = new HomeBean();
         tagBean04.setItemType(ItemType.TAG);
@@ -124,6 +128,23 @@ public class HomeActivity extends AppCompatActivity {
 
         addHeadBannerToListView();
         addSearchBarToListView();
+    }
+
+    private void getDataForCookShow() {
+        List<CookShow> cookShowList = new ArrayList<>();
+        for(int i=0; i<imgArr11.length; i++) {
+            CookShow cookShow = new CookShow();
+            cookShow.setAvatarId(imgArr11[i]);
+            cookShow.setTitle("I'm Title "+(i+1));
+            cookShow.setLikeNum(i * 5);
+            cookShow.setCommentNum(i*6);
+            cookShow.setUsername("username"+i);
+            cookShowList.add(cookShow);
+        }
+        HomeBean bean = new HomeBean();
+        bean.setItemType(ItemType.COOK_SHOW);
+        bean.setCookShowList(cookShowList);
+        mList.add(bean);
     }
 
     private void getDataForGourmet() {
