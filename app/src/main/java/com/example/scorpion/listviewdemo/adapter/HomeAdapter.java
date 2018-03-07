@@ -8,11 +8,11 @@ import android.widget.BaseAdapter;
 
 import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
-import com.example.scorpion.listviewdemo.holder.SignMallHolder;
+import com.example.scorpion.listviewdemo.holder.BoutiqueHolder;
 import com.example.scorpion.listviewdemo.holder.TagHolder;
 
 import java.util.List;
-import java.util.zip.Inflater;
+
 
 /**
  * Created by scorpion on 2018/3/5.
@@ -29,7 +29,6 @@ public class HomeAdapter extends BaseAdapter {
     private static final int GOURMET = 6;
 
 
-
     private Context mContext;
     private List<HomeBean> mList;
 
@@ -40,7 +39,7 @@ public class HomeAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mList==null?0:mList.size();
+        return mList == null ? 0 : mList.size();
     }
 
     @Override
@@ -68,8 +67,9 @@ public class HomeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         HomeBean bean = mList.get(position);
-//        SignMallHolder signMallHolder;
         TagHolder tagHolder;
+        BoutiqueHolder boutiqueHolder;
+
         switch (bean.getItemType().getValue()) {
             case SIGN_MALL:
                 if (convertView == null) {
@@ -86,9 +86,21 @@ public class HomeAdapter extends BaseAdapter {
                 }
                 tagHolder.refreshUI(bean);
                 break;
+            case BOUTIQUE:
+                if (convertView == null) {
+                    convertView = inflater.inflate(R.layout.layout_boutique, null);
+                    boutiqueHolder = new BoutiqueHolder(convertView);
+                    convertView.setTag(boutiqueHolder);
+                } else {
+                    boutiqueHolder = (BoutiqueHolder) convertView.getTag();
+                }
+                boutiqueHolder.refreshUI(bean);
+                break;
+
         }
 
 
         return convertView;
     }
+
 }

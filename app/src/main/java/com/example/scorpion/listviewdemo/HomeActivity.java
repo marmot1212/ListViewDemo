@@ -9,12 +9,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
+import com.example.scorpion.listviewdemo.bean.Boutique;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
 import com.example.scorpion.listviewdemo.bean.ItemType;
 import com.example.scorpion.listviewdemo.holder.HeadBannerHolder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -77,6 +77,9 @@ public class HomeActivity extends AppCompatActivity {
         tagBean.setTagTitle("专辑推荐");
         mList.add(tagBean);
 
+        // BOUTIQUE 专辑推荐内容
+        getDataForBoutique();
+
         // tag02 精选菜谱
         HomeBean tagBean03 = new HomeBean();
         tagBean03.setItemType(ItemType.TAG);
@@ -91,6 +94,22 @@ public class HomeActivity extends AppCompatActivity {
 
         addHeadBannerToListView();
         addSearchBarToListView();
+    }
+
+
+
+    private void getDataForBoutique() {
+        for(int i=0; i<5; i++) {
+            Boutique boutique = new Boutique();
+            boutique.setTitle("第"+i+"个专辑的标题");
+            boutique.setLikeNum(i * 5);
+            boutique.setCommentNum(i*6);
+
+            HomeBean bean = new HomeBean();
+            bean.setItemType(ItemType.BOUTIQUE);
+            bean.setBoutique(boutique);
+            mList.add(bean);
+        }
     }
 
     private void addSearchBarToListView() {
