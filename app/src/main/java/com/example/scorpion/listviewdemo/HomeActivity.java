@@ -75,9 +75,6 @@ public class HomeActivity extends AppCompatActivity {
         };
         mList = new ArrayList<>();
 
-        // 美食达人模块内容
-        getDataForGourmet();
-
         // SIGN_MALL 签到和商城
         HomeBean signMallBean = new HomeBean();
         signMallBean.setItemType(ItemType.SIGN_MALL);
@@ -120,29 +117,15 @@ public class HomeActivity extends AppCompatActivity {
         mList.add(tagBean04);
 
         // 美食达人模块内容
-        getDataForGourmet2();
+        getDataForGourmet();
 
         // 广告03
         mList.add(adBean); // 数据内容跟广告01相同
-
-        // 美食达人模块内容
-        getDataForGourmet();
 
         addHeadBannerToListView();
         addSearchBarToListView();
     }
 
-    private void getDataForGourmet2() {
-        HomeBean bean = new HomeBean();
-        bean.setItemType(ItemType.GOURMET);
-        List<Gourmet> list = new ArrayList<>();
-        for(int i=0; i<imgArr04.length; i++) {
-            Gourmet gourmet = new Gourmet(imgArr04[i],"美食家"+i);
-            list.add(gourmet);
-        }
-        bean.setGourmetList(list);
-        mList.add(bean);
-    }
     private void getDataForGourmet() {
         HomeBean bean = new HomeBean();
         bean.setItemType(ItemType.GOURMET);
