@@ -2,6 +2,7 @@ package com.example.scorpion.listviewdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
@@ -9,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
 import com.example.scorpion.listviewdemo.bean.Boutique;
+import com.example.scorpion.listviewdemo.bean.Gourmet;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
 import com.example.scorpion.listviewdemo.bean.ItemType;
 import com.example.scorpion.listviewdemo.bean.Recipe;
@@ -114,11 +116,26 @@ public class HomeActivity extends AppCompatActivity {
         tagBean04.setTagTitle("美食达人");
         mList.add(tagBean04);
 
+        // 美食达人模块内容
+        getDataForGourmet();
+
         // 广告03
         mList.add(adBean); // 数据内容跟广告01相同
 
         addHeadBannerToListView();
         addSearchBarToListView();
+    }
+
+    private void getDataForGourmet() {
+        HomeBean bean = new HomeBean();
+        bean.setItemType(ItemType.GOURMET);
+        List<Gourmet> list = new ArrayList<>();
+        for(int i=0; i<imgArr11.length; i++) {
+            Gourmet gourmet = new Gourmet(imgArr11[i],"美食家"+i);
+            list.add(gourmet);
+        }
+        bean.setGourmetList(list);
+        mList.add(bean);
     }
 
     private void getDataForRecipe() {

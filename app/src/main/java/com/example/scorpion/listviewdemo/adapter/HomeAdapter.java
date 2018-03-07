@@ -1,7 +1,8 @@
 package com.example.scorpion.listviewdemo.adapter;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,9 @@ import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
 import com.example.scorpion.listviewdemo.holder.AdHolder;
 import com.example.scorpion.listviewdemo.holder.BoutiqueHolder;
+import com.example.scorpion.listviewdemo.holder.GourmetHolder;
 import com.example.scorpion.listviewdemo.holder.RecipeHolder;
 import com.example.scorpion.listviewdemo.holder.TagHolder;
-import com.example.scorpion.listviewdemo.view.FlowIndicator;
 
 import java.util.List;
 
@@ -78,6 +79,7 @@ public class HomeAdapter extends BaseAdapter {
         BoutiqueHolder boutiqueHolder;
         AdHolder adHolder;
         RecipeHolder recipeHolder;
+        GourmetHolder gourmetHolder;
 
         /**
          * 封装conventView中的view为(holder的属性)
@@ -127,6 +129,20 @@ public class HomeAdapter extends BaseAdapter {
                     recipeHolder = (RecipeHolder) convertView.getTag();
                 }
                 recipeHolder.refreshUI(bean);
+                break;
+            case COOK_SHOW:
+                break;
+            case GOURMET:
+                if (convertView == null) {
+                    convertView = inflater.inflate(R.layout.layout_gourmet, null);
+                    gourmetHolder = new GourmetHolder(mContext, convertView);
+                    convertView.setTag(gourmetHolder);
+                    Log.i("main","HomeAdapter, convertView == null, 初始化 gourmetHolder");
+                } else {
+                    gourmetHolder = (GourmetHolder) convertView.getTag();
+                    Log.i("main","HomeAdapter, convertView != null, getTag() 获得 gourmetHolder");
+                }
+                gourmetHolder.initAdapter(bean);
                 break;
 
         }
