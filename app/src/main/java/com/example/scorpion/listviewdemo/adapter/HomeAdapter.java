@@ -1,18 +1,19 @@
 package com.example.scorpion.listviewdemo.adapter;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
+import com.example.scorpion.listviewdemo.holder.AdHolder;
 import com.example.scorpion.listviewdemo.holder.BoutiqueHolder;
 import com.example.scorpion.listviewdemo.holder.RecipeHolder;
 import com.example.scorpion.listviewdemo.holder.TagHolder;
+import com.example.scorpion.listviewdemo.view.FlowIndicator;
 
 import java.util.List;
 
@@ -75,8 +76,13 @@ public class HomeAdapter extends BaseAdapter {
         HomeBean bean = mList.get(position);
         TagHolder tagHolder;
         BoutiqueHolder boutiqueHolder;
+        AdHolder adHolder;
         RecipeHolder recipeHolder;
 
+        /**
+         * 封装conventView中的view为(holder的属性)
+         * convertView.setTag()达到复用的目的
+         */
         switch (getItemViewType(position)) {
             case SIGN_MALL:
                 if (convertView == null) {
@@ -102,6 +108,15 @@ public class HomeAdapter extends BaseAdapter {
                     boutiqueHolder = (BoutiqueHolder) convertView.getTag();
                 }
                 boutiqueHolder.refreshUI(bean);
+                break;
+            case AD:
+                if (convertView != null) {
+                    convertView = null;
+                }
+                convertView = inflater.inflate(R.layout.layout_ad, null);
+                adHolder = new AdHolder(mContext, convertView);
+                convertView.setTag(adHolder);
+                adHolder.setViewPager(bean);
                 break;
             case RECIPE:
                 if (convertView == null) {

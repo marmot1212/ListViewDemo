@@ -11,6 +11,7 @@ public class HomeBean {
     private String mTagTitle;
     private Boutique mBoutique;
     private Recipe[] mRecipeArr;
+    private int[] mAdPicIds;
 
 
     public ItemType getItemType() {
@@ -43,5 +44,13 @@ public class HomeBean {
 
     public void setRecipeArr(Recipe[] recipeArr) {
         mRecipeArr = recipeArr;
+    }
+
+    public int[] getAdPicIds() {
+        return mAdPicIds;
+    }
+
+    public void setAdPicIds(int[] adPicIds) {
+        mAdPicIds = adPicIds;
     }
 }

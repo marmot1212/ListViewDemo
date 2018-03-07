@@ -2,7 +2,6 @@ package com.example.scorpion.listviewdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
@@ -88,6 +87,12 @@ public class HomeActivity extends AppCompatActivity {
         // BOUTIQUE 专辑推荐内容
         getDataForBoutique();
 
+        // 广告01 AD
+        HomeBean adBean = new HomeBean();
+        adBean.setItemType(ItemType.AD);
+        adBean.setAdPicIds(imgArr04);
+        mList.add(adBean);
+
         // tag02 精选菜谱
         HomeBean tagBean03 = new HomeBean();
         tagBean03.setItemType(ItemType.TAG);
@@ -97,11 +102,20 @@ public class HomeActivity extends AppCompatActivity {
         // 精选菜谱的数据内容 
         getDataForRecipe();
 
+        // 广告02 AD
+        HomeBean adBean2 = new HomeBean();
+        adBean2.setItemType(ItemType.AD);
+        adBean2.setAdPicIds(imgArr11);
+        mList.add(adBean2);
+
         // tag03 美食达人
         HomeBean tagBean04 = new HomeBean();
         tagBean04.setItemType(ItemType.TAG);
         tagBean04.setTagTitle("美食达人");
         mList.add(tagBean04);
+
+        // 广告03
+        mList.add(adBean); // 数据内容跟广告01相同
 
         addHeadBannerToListView();
         addSearchBarToListView();
