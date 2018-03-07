@@ -137,10 +137,10 @@ public class HomeAdapter extends BaseAdapter {
                     convertView = inflater.inflate(R.layout.layout_gourmet, null);
                     gourmetHolder = new GourmetHolder(mContext, convertView);
                     convertView.setTag(gourmetHolder);
-                    Log.i("main","HomeAdapter, convertView == null, 初始化 gourmetHolder");
+                    Log.i("main","HomeAdapter, convertView == null, 初始化 gourmetHolder. 数据长度 = "+bean.getGourmetList().size());
                 } else {
                     gourmetHolder = (GourmetHolder) convertView.getTag();
-                    Log.i("main","HomeAdapter, convertView != null, getTag() 获得 gourmetHolder");
+                    Log.i("main","HomeAdapter, convertView != null, getTag() 获得 gourmetHolder，，， 数据长度 = "+bean.getGourmetList().size());
                 }
                 gourmetHolder.initAdapter(bean);
                 break;
