@@ -1,9 +1,9 @@
-package com.example.exer01_recyclerview.utils;
+package com.example.scorpion.listviewdemo.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
 
-import com.example.exer01_recyclerview.MyApplication;
+import com.example.scorpion.listviewdemo.MyApplication;
 
 
 /**

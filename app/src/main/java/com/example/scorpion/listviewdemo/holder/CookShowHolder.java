@@ -14,6 +14,7 @@ import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.adapter.ImageAdapter;
 import com.example.scorpion.listviewdemo.bean.CookShow;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
+import com.example.scorpion.listviewdemo.utils.DisplayTool;
 import com.example.scorpion.listviewdemo.utils.ToastUtil;
 
 import java.util.List;
@@ -48,10 +49,15 @@ public class CookShowHolder {
     private List<CookShow>  mList;
     private ImageAdapter mAdapter;
 
+    // 轮播指示器
+    private DisplayTool mDisplayTool;
+    private int preIndex = 0;
+
     public CookShowHolder(Context context, View convertView) {
         mContext = context;
         ButterKnife.bind(this, convertView);
 
+        mDisplayTool = new DisplayTool(mContext);
         initHandler();
     }
 
@@ -100,7 +106,22 @@ public class CookShowHolder {
         if (bean != null) {
             mList = bean.getCookShowList();
         }
+
         int[] picIds = new int[mList.size()];
+        // 初始化指示器 mLayoutIndicator
+        View dot;
+        LinearLayout.LayoutParams params;
+        for(int i=0; i<picIds.length; i++) {
+            picIds[i] = mList.get(i).getPicId();
+            params = new LinearLayout.LayoutParams(mDisplayTool.dip2px(10),mDisplayTool.dip2px(10));
+            params.leftMargin = mDisplayTool.dip2px(10);
+            dot = new View(mContext);
+            dot.setBackgroundResource(R.drawable.indicator_seclector);
+            dot.setEnabled(false);
+            dot.setLayoutParams(params);
+            mLayoutIndicator.addView(dot);
+        }
+
         mAdapter = new ImageAdapter(mContext, picIds);
         mViewPager.setAdapter(mAdapter);
 
@@ -108,6 +129,7 @@ public class CookShowHolder {
         // 初始化ViewPager并启动轮播
         mViewPager.setCurrentItem(0);
         refreshUI(0);
+        mLayoutIndicator.getChildAt(0).setEnabled(true);
         mHandler.sendEmptyMessageDelayed(MSG_REFRESH, DELAY_TIME);
     }
 
@@ -137,6 +159,12 @@ public class CookShowHolder {
                 mHandler.sendMessage(Message.obtain(mHandler, MSG_PAGE_CHECK, position, 0));
                 // 修改页码的其他内容与轮播图片一致
                 refreshUI(position);
+                // 修改 指示器焦点
+                int temp = position%mList.size();
+                mLayoutIndicator.getChildAt(preIndex).setEnabled(false);
+                mLayoutIndicator.getChildAt(temp).setEnabled(true);
+                preIndex = temp;
+
             }
 
             @Override
