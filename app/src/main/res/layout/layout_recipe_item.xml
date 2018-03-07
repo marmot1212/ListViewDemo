@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+    >
+    <ImageView
+        android:id="@+id/ivThumb"
+        style="@style/style_base"
+        android:src="@drawable/nopic"
+        />
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/text_18"
+        android:text="标题"
+        android:layout_marginTop="@dimen/spacing_small"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/style_base01"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/spacing_small"
+        >
+        <TextView
+            android:id="@+id/tvLikeNum"
+            style="@style/text_13"
+            android:drawableLeft="@mipmap/icon_like"
+            android:text="333"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:drawablePadding="@dimen/spacing_little"
+            />
+        <TextView
+            android:id="@+id/tvCommentNum"
+            style="@style/text_13"
+            android:drawableLeft="@mipmap/icon_comment"
+            android:text="999"
+            android:drawablePadding="@dimen/spacing_little"
+            />
+
+    </LinearLayout>
+</LinearLayout>

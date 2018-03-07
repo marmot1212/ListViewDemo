@@ -12,6 +12,7 @@ import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
 import com.example.scorpion.listviewdemo.bean.Boutique;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
 import com.example.scorpion.listviewdemo.bean.ItemType;
+import com.example.scorpion.listviewdemo.bean.Recipe;
 import com.example.scorpion.listviewdemo.holder.HeadBannerHolder;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.listView)
     ListView mListView;
     private int[] imgArr04;
+    private int[] imgArr11;
     private HomeAdapter mAdapter;
     private List<HomeBean> mList;
     private RelativeLayout mRelativeLayout;
@@ -46,13 +48,13 @@ public class HomeActivity extends AppCompatActivity {
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-                Log.i("main", TAG+", onScrollStateChanged, scrollState = "+scrollState);
+//                Log.i("main", TAG+", onScrollStateChanged, scrollState = "+scrollState);
             }
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.i("main", TAG+", onScroll, firstVisibleItem = "+firstVisibleItem+", visibleItemCount ="
-                        +visibleItemCount+", totalItemCount"+totalItemCount);
+//                Log.i("main", TAG+", onScroll, firstVisibleItem = "+firstVisibleItem+", visibleItemCount ="
+//                        +visibleItemCount+", totalItemCount"+totalItemCount);
                 if (firstVisibleItem >= 1) {
                     mRelativeLayout.setVisibility(View.VISIBLE);
                 } else {
@@ -64,6 +66,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initData() {
         imgArr04 = new int[]{R.drawable.ad1, R.drawable.ad2, R.drawable.ad3, R.drawable.ad4};
+        imgArr11 = new int[]{
+                R.drawable.tencent_safe, R.drawable.baidu_safe, R.drawable.kingsoft_safe,
+                R.drawable.an_doctor, R.drawable.ruixing_safe, R.drawable.wangqin_safe,
+                R.drawable.lost_safe,R.drawable.bigspider_safe,R.drawable.avg_safe,
+                R.drawable.lbe_safe,R.drawable.mobile_an_safe
+        };
         mList = new ArrayList<>();
 
         // SIGN_MALL 签到和商城
@@ -86,6 +94,9 @@ public class HomeActivity extends AppCompatActivity {
         tagBean03.setTagTitle("精选菜谱");
         mList.add(tagBean03);
 
+        // 精选菜谱的数据内容 
+        getDataForRecipe();
+
         // tag03 美食达人
         HomeBean tagBean04 = new HomeBean();
         tagBean04.setItemType(ItemType.TAG);
@@ -96,7 +107,40 @@ public class HomeActivity extends AppCompatActivity {
         addSearchBarToListView();
     }
 
+    private void getDataForRecipe() {
+        List<Recipe> list = new ArrayList<>();
+        /**
+         * 产生菜谱的原数据，真实项目中从服务器下载
+         */
+        for (int i = 0; i < imgArr11.length; i++) {
+            Recipe recipe = new Recipe();
+            recipe.setPicId(imgArr11[i]);
+            recipe.setTitle("第" + i + "个精选菜谱的标题");
+            recipe.setIntroduce("这是精选菜谱的简介");
+            recipe.setLikeNum(i * 5);
+            recipe.setCommentNum(i * 6);
+            list.add(recipe);
+        }
 
+        for(int i=0; i<list.size()/2; i++) {
+            Recipe[] recipes = new Recipe[2];
+            recipes[0] = list.get(i*2);
+            recipes[1] = list.get(i*2+1);
+            HomeBean bean = new HomeBean();
+            bean.setItemType(ItemType.RECIPE);
+            bean.setRecipeArr(recipes);
+            mList.add(bean);
+        }
+        if (list.size() % 2 == 1) {
+            Recipe[] recipes = new Recipe[2];
+            recipes[0] = list.get(list.size() - 1);
+            HomeBean bean = new HomeBean();
+            bean.setItemType(ItemType.RECIPE);
+            bean.setRecipeArr(recipes);
+            mList.add(bean);
+        }
+
+    }
 
     private void getDataForBoutique() {
         for(int i=0; i<5; i++) {

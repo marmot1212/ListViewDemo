@@ -10,6 +10,7 @@ public class HomeBean {
     private ItemType mItemType;
     private String mTagTitle;
     private Boutique mBoutique;
+    private Recipe[] mRecipeArr;
 
 
     public ItemType getItemType() {
@@ -34,5 +35,13 @@ public class HomeBean {
 
     public void setBoutique(Boutique boutique) {
         mBoutique = boutique;
+    }
+
+    public Recipe[] getRecipeArr() {
+        return mRecipeArr;
+    }
+
+    public void setRecipeArr(Recipe[] recipeArr) {
+        mRecipeArr = recipeArr;
     }
 }

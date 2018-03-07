@@ -5,13 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.bean.HomeBean;
 import com.example.scorpion.listviewdemo.holder.BoutiqueHolder;
+import com.example.scorpion.listviewdemo.holder.RecipeHolder;
 import com.example.scorpion.listviewdemo.holder.TagHolder;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -69,8 +75,9 @@ public class HomeAdapter extends BaseAdapter {
         HomeBean bean = mList.get(position);
         TagHolder tagHolder;
         BoutiqueHolder boutiqueHolder;
+        RecipeHolder recipeHolder;
 
-        switch (bean.getItemType().getValue()) {
+        switch (getItemViewType(position)) {
             case SIGN_MALL:
                 if (convertView == null) {
                     convertView = inflater.inflate(R.layout.layout_sign_and_mall, null);
@@ -95,6 +102,16 @@ public class HomeAdapter extends BaseAdapter {
                     boutiqueHolder = (BoutiqueHolder) convertView.getTag();
                 }
                 boutiqueHolder.refreshUI(bean);
+                break;
+            case RECIPE:
+                if (convertView == null) {
+                    convertView = inflater.inflate(R.layout.layout_recipe, null);
+                    recipeHolder = new RecipeHolder(convertView);
+                    convertView.setTag(recipeHolder);
+                } else {
+                    recipeHolder = (RecipeHolder) convertView.getTag();
+                }
+                recipeHolder.refreshUI(bean);
                 break;
 
         }
