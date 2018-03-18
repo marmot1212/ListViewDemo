@@ -5,23 +5,23 @@ package com.example.scorpion.listviewdemo.model.bean;
  */
 
 public class Gourmet {
-    private int picId;
+    private String url;
     private String title;
 
     public Gourmet() {
     }
 
-    public Gourmet(int picId, String title) {
-        this.picId = picId;
+    public Gourmet(String title, String url) {
+        this.url = url;
         this.title = title;
     }
 
-    public int getPicId() {
-        return picId;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPicId(int picId) {
-        this.picId = picId;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getTitle() {
@@ -35,7 +35,7 @@ public class Gourmet {
     @Override
     public String toString() {
         return "Gourmet{" +
-                "picId=" + picId +
+                "url=" + url +
                 ", title='" + title + '\'' +
                 '}';
     }

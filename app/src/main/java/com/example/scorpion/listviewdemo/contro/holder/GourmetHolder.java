@@ -12,6 +12,8 @@ import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.model.bean.Gourmet;
 import com.example.scorpion.listviewdemo.model.bean.HomeBean;
 import com.example.scorpion.listviewdemo.model.utils.ToastUtil;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -92,7 +94,12 @@ public class GourmetHolder  {
 
             public void refreshUI(Gourmet gourmet) {
                 if (gourmet != null) {
-                    ivThumb.setImageResource(gourmet.getPicId());
+//                    ivThumb.setImageResource(gourmet.getPicId());
+                    Picasso.with(mContext)
+                            .load(gourmet.getUrl())
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .error(R.drawable.nopic)
+                            .into(ivThumb);
                     tvTitle.setText(gourmet.getTitle());
                 }
             }

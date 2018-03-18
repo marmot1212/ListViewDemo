@@ -152,8 +152,20 @@ public class HomeActivity extends AppCompatActivity {
         HomeBean bean = new HomeBean();
         bean.setItemType(ItemType.GOURMET);
         List<Gourmet> list = new ArrayList<>();
+        // http://s2.cdn.xiachufang.com/ab01f4d82a4511e7947d0242ac110002_400w_225h.gif?imageView2/1/w/215/h/136/interlace/1/q/90/format/gif/.gif
+        // http://s2.cdn.xiachufang.com/263e671888b511e6a9a10242ac110002_640w_640h.jpg?imageView2/1/w/215/h/136/interlace/1/q/90
+        // http://s1.cdn.xiachufang.com/f8c973446ee711e7bc9d0242ac110002_2555w_2555h.jpg@2o_50sh_1pr_1l_215w_136h_1c_1e_90q_1wh
+        // http://s1.cdn.xiachufang.com/2317ff22c57f4e8faf646b7f123c1f4c_1000w_563h.jpg@2o_50sh_1pr_1l_215w_136h_1c_1e_90q_1wh
+        // http://s1.cdn.xiachufang.com/4b108c0a888911e6b87c0242ac110003_900w_600h.jpg@2o_50sh_1pr_1l_215w_136h_1c_1e_90q_1wh
+        String[] urlArr = new String[]{
+                "http://s2.cdn.xiachufang.com/ab01f4d82a4511e7947d0242ac110002_400w_225h.gif?imageView2/1/w/215/h/136/interlace/1/q/90/format/gif/.gif",
+                "http://s2.cdn.xiachufang.com/263e671888b511e6a9a10242ac110002_640w_640h.jpg?imageView2/1/w/215/h/136/interlace/1/q/90",
+                "http://s1.cdn.xiachufang.com/f8c973446ee711e7bc9d0242ac110002_2555w_2555h.jpg@2o_50sh_1pr_1l_215w_136h_1c_1e_90q_1wh",
+                "http://s1.cdn.xiachufang.com/2317ff22c57f4e8faf646b7f123c1f4c_1000w_563h.jpg@2o_50sh_1pr_1l_215w_136h_1c_1e_90q_1wh",
+                "http://s1.cdn.xiachufang.com/4b108c0a888911e6b87c0242ac110003_900w_600h.jpg@2o_50sh_1pr_1l_215w_136h_1c_1e_90q_1wh"
+        };
         for(int i=0; i<imgArr11.length; i++) {
-            Gourmet gourmet = new Gourmet(imgArr11[i],"美食家"+i);
+            Gourmet gourmet = new Gourmet("美食家"+i, urlArr[i%urlArr.length]);
             list.add(gourmet);
         }
         bean.setGourmetList(list);
