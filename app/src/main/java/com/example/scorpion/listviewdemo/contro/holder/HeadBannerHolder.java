@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import com.example.scorpion.listviewdemo.R;
 import com.example.scorpion.listviewdemo.contro.adapter.ImageAdapter;
+import com.example.scorpion.listviewdemo.model.bean.Banner;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,8 +26,9 @@ import butterknife.ButterKnife;
  */
 
 public class HeadBannerHolder {
-    private int[] mPicIdArr;
-    private String[] mStringArr;
+    private List<Banner> mList;
+//    private int[] mPicIdArr;
+//    private String[] mStringArr;
     private View convertView;
     //    private ViewPager mViewPager;
 //    private TextView mTvTitle;
@@ -41,9 +45,8 @@ public class HeadBannerHolder {
     public HeadBannerHolder() {
     }
 
-    public HeadBannerHolder(Context context, int[] picIdArr, String[] stringArr) {
-        mPicIdArr = picIdArr;
-        mStringArr = stringArr;
+    public HeadBannerHolder(Context context, List<Banner> list) {
+        mList = list;
         mContext = context;
         convertView = View.inflate(mContext, R.layout.layout_head_banner, null);
         mViewHolder = new ViewHolder(convertView);
@@ -94,13 +97,13 @@ public class HeadBannerHolder {
 
     private void setViewPager() {
         if (mImageAdapter == null) {
-            mImageAdapter = new ImageAdapter(mContext, mPicIdArr);
+            mImageAdapter = new ImageAdapter(mContext, mList);
         }
         setListener();
         mViewHolder.mViewPager.setAdapter(mImageAdapter);
         // 初始化mViewPager
         mViewHolder.mViewPager.setCurrentItem(0);
-        mViewHolder.mTvTitle.setText(mStringArr[0]);
+        mViewHolder.mTvTitle.setText(mList.get(0).getTitle());
         // 启动自动轮播
         mHandler.sendEmptyMessageDelayed(MESSAGE_REFRESH, DELAY_TIME);
     }
@@ -121,7 +124,7 @@ public class HeadBannerHolder {
             public void onPageSelected(int position) {
                 mHandler.sendMessage(Message.obtain(mHandler, MESSAGE_PAGE_CHECK, position, 0));
                 // 更新轮播图的标题
-                mViewHolder.mTvTitle.setText(mStringArr[position % mStringArr.length]);
+                mViewHolder.mTvTitle.setText(mList.get(position % mList.size()).getTitle());
             }
 
             @Override

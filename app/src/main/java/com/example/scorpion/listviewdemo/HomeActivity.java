@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.example.scorpion.listviewdemo.contro.adapter.HomeAdapter;
 import com.example.scorpion.listviewdemo.contro.holder.HeadBannerHolder;
+import com.example.scorpion.listviewdemo.model.bean.Banner;
 import com.example.scorpion.listviewdemo.model.bean.Boutique;
 import com.example.scorpion.listviewdemo.model.bean.CookShow;
 import com.example.scorpion.listviewdemo.model.bean.Gourmet;
@@ -217,8 +218,23 @@ public class HomeActivity extends AppCompatActivity {
         // 数据
         String[] titleArr = new String[]{"第1个轮播图", "第二个轮播图", "第3个轮播图", "第四个轮播图"};
 
+
+
+        String[] urls = new String[]{
+                "https://img.alicdn.com/imgextra/i2/9/TB2IWtCdr5YBuNjSspoXXbeNFXa_!!9-0-luban.jpg_q100.jpg",
+                "http://pic.qiantucdn.com/58pic/28/38/06/99q58PICzkQ_1024.jpg",
+                "http://pic.qiantucdn.com/58pic/26/27/07/89V58PIC2Q5_1024.jpg",
+                "http://pic.qiantucdn.com/58pic/26/93/98/05958PICPHS_1024.jpg"
+        };
+        List<Banner> list = new ArrayList<>();
+        for(int i=0; i<titleArr.length; i++) {
+            Banner banner = new Banner(titleArr[i],urls[i]);
+            list.add(banner);
+        }
+
+
         // holder 实例化
-        HeadBannerHolder holder = new HeadBannerHolder(this, imgArr04, titleArr);
+        HeadBannerHolder holder = new HeadBannerHolder(this, list);
         // 获得view
         // 加入到mListView
         mListView.addHeaderView(holder.getConvertView());

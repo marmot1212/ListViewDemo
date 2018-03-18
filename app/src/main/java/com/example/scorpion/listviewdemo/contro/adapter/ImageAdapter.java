@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
+import com.example.scorpion.listviewdemo.R;
+import com.example.scorpion.listviewdemo.model.bean.Banner;
+import com.example.scorpion.listviewdemo.model.utils.DisplayTool;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +27,20 @@ public class ImageAdapter extends PagerAdapter {
     private Context mContext;
     private List<ImageView> mList;
 
+    public ImageAdapter(Context context, List<Banner> list) {
+        mContext = context;
+        mList = new ArrayList<>();
+        for(int i=0; i<list.size(); i++) {
+            ImageView imageView = new ImageView(mContext);
+            DisplayTool tool = new DisplayTool(mContext);
+            Picasso.with(mContext)
+                    .load(list.get(i).getUrl())
+                    .error(R.drawable.nopic)
+                    .resize(tool.dip2px(320), tool.dip2px(100))
+                    .into(imageView);
+            mList.add(imageView);
+        }
+    }
     public ImageAdapter(Context context, int[] picIds) {
         mContext = context;
         mList = new ArrayList<>();
