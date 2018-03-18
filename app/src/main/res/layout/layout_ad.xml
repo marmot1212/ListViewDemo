@@ -12,7 +12,7 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-        <com.example.scorpion.listviewdemo.view.FlowIndicator
+        <com.example.scorpion.listviewdemo.contro.view.FlowIndicator
             android:id="@+id/flowIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

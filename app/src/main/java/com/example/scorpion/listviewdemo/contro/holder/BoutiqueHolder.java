@@ -1,12 +1,12 @@
-package com.example.scorpion.listviewdemo.holder;
+package com.example.scorpion.listviewdemo.contro.holder;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.scorpion.listviewdemo.R;
-import com.example.scorpion.listviewdemo.bean.Boutique;
-import com.example.scorpion.listviewdemo.bean.HomeBean;
+import com.example.scorpion.listviewdemo.model.bean.Boutique;
+import com.example.scorpion.listviewdemo.model.bean.HomeBean;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

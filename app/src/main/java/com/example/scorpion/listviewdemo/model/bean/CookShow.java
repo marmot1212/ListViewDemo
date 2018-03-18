@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.bean;
+package com.example.scorpion.listviewdemo.model.bean;
 
 /**
  * Created by scorpion on 2018/3/7.

@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.holder;
+package com.example.scorpion.listviewdemo.contro.holder;
 
 import android.content.Context;
 import android.os.Handler;
@@ -7,10 +7,10 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.example.scorpion.listviewdemo.R;
-import com.example.scorpion.listviewdemo.adapter.ImageAdapter;
-import com.example.scorpion.listviewdemo.bean.HomeBean;
-import com.example.scorpion.listviewdemo.utils.ToastUtil;
-import com.example.scorpion.listviewdemo.view.FlowIndicator;
+import com.example.scorpion.listviewdemo.contro.adapter.ImageAdapter;
+import com.example.scorpion.listviewdemo.contro.view.FlowIndicator;
+import com.example.scorpion.listviewdemo.model.bean.HomeBean;
+import com.example.scorpion.listviewdemo.model.utils.ToastUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

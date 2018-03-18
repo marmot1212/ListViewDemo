@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.adapter;
+package com.example.scorpion.listviewdemo.contro.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

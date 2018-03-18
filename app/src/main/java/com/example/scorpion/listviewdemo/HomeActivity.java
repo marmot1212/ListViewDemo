@@ -8,14 +8,14 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.example.scorpion.listviewdemo.adapter.HomeAdapter;
-import com.example.scorpion.listviewdemo.bean.Boutique;
-import com.example.scorpion.listviewdemo.bean.CookShow;
-import com.example.scorpion.listviewdemo.bean.Gourmet;
-import com.example.scorpion.listviewdemo.bean.HomeBean;
-import com.example.scorpion.listviewdemo.bean.ItemType;
-import com.example.scorpion.listviewdemo.bean.Recipe;
-import com.example.scorpion.listviewdemo.holder.HeadBannerHolder;
+import com.example.scorpion.listviewdemo.contro.adapter.HomeAdapter;
+import com.example.scorpion.listviewdemo.contro.holder.HeadBannerHolder;
+import com.example.scorpion.listviewdemo.model.bean.Boutique;
+import com.example.scorpion.listviewdemo.model.bean.CookShow;
+import com.example.scorpion.listviewdemo.model.bean.Gourmet;
+import com.example.scorpion.listviewdemo.model.bean.HomeBean;
+import com.example.scorpion.listviewdemo.model.bean.ItemType;
+import com.example.scorpion.listviewdemo.model.bean.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;

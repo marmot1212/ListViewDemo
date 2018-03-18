@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.bean;
+package com.example.scorpion.listviewdemo.model.bean;
 
 import java.util.List;
 

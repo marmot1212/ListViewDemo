@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.view;
+package com.example.scorpion.listviewdemo.contro.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

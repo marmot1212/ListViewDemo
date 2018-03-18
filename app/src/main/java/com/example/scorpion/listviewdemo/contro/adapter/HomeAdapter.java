@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.adapter;
+package com.example.scorpion.listviewdemo.contro.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,24 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.scorpion.listviewdemo.R;
-import com.example.scorpion.listviewdemo.bean.HomeBean;
-import com.example.scorpion.listviewdemo.holder.AdHolder;
-import com.example.scorpion.listviewdemo.holder.BoutiqueHolder;
-import com.example.scorpion.listviewdemo.holder.CookShowHolder;
-import com.example.scorpion.listviewdemo.holder.GourmetHolder;
-import com.example.scorpion.listviewdemo.holder.RecipeHolder;
-import com.example.scorpion.listviewdemo.holder.TagHolder;
+import com.example.scorpion.listviewdemo.contro.holder.AdHolder;
+import com.example.scorpion.listviewdemo.contro.holder.BoutiqueHolder;
+import com.example.scorpion.listviewdemo.contro.holder.CookShowHolder;
+import com.example.scorpion.listviewdemo.contro.holder.GourmetHolder;
+import com.example.scorpion.listviewdemo.contro.holder.RecipeHolder;
+import com.example.scorpion.listviewdemo.contro.holder.TagHolder;
+import com.example.scorpion.listviewdemo.model.bean.HomeBean;
 
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**

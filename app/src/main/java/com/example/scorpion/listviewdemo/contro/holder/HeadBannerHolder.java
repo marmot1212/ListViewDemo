@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.holder;
+package com.example.scorpion.listviewdemo.contro.holder;
 
 import android.content.Context;
 import android.os.Handler;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scorpion.listviewdemo.R;
-import com.example.scorpion.listviewdemo.adapter.ImageAdapter;
+import com.example.scorpion.listviewdemo.contro.adapter.ImageAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

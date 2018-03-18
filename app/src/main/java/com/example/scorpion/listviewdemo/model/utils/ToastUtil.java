@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.utils;
+package com.example.scorpion.listviewdemo.model.utils;
 
 import android.widget.Toast;
 

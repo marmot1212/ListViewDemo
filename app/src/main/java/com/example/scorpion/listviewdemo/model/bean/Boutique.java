@@ -1,15 +1,26 @@
-package com.example.scorpion.listviewdemo.bean;
+package com.example.scorpion.listviewdemo.model.bean;
 
 /**
  * Created by scorpion on 2018/3/7.
  */
 
-public class Recipe {
+public class Boutique {
     private int picId;
     private String title;
-    private String introduce;
+    private String content;
     private int likeNum;
     private int commentNum;
+
+    @Override
+    public String toString() {
+        return "Boutique{" +
+                "picId=" + picId +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", likeNum=" + likeNum +
+                ", commentNum=" + commentNum +
+                '}';
+    }
 
     public int getPicId() {
         return picId;
@@ -27,12 +38,12 @@ public class Recipe {
         this.title = title;
     }
 
-    public String getIntroduce() {
-        return introduce;
+    public String getContent() {
+        return content;
     }
 
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getLikeNum() {
@@ -49,16 +60,5 @@ public class Recipe {
 
     public void setCommentNum(int commentNum) {
         this.commentNum = commentNum;
-    }
-
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "picId=" + picId +
-                ", title='" + title + '\'' +
-                ", introduce='" + introduce + '\'' +
-                ", likeNum=" + likeNum +
-                ", commentNum=" + commentNum +
-                '}';
     }
 }

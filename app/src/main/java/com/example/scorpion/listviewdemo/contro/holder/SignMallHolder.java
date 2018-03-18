@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.holder;
+package com.example.scorpion.listviewdemo.contro.holder;
 
 import android.view.View;
 

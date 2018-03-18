@@ -1,4 +1,4 @@
-package com.example.scorpion.listviewdemo.holder;
+package com.example.scorpion.listviewdemo.contro.holder;
 
 import android.content.Context;
 import android.os.Handler;
@@ -11,11 +11,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.scorpion.listviewdemo.R;
-import com.example.scorpion.listviewdemo.adapter.ImageAdapter;
-import com.example.scorpion.listviewdemo.bean.CookShow;
-import com.example.scorpion.listviewdemo.bean.HomeBean;
-import com.example.scorpion.listviewdemo.utils.DisplayTool;
-import com.example.scorpion.listviewdemo.utils.ToastUtil;
+import com.example.scorpion.listviewdemo.contro.adapter.ImageAdapter;
+import com.example.scorpion.listviewdemo.model.bean.CookShow;
+import com.example.scorpion.listviewdemo.model.bean.HomeBean;
+import com.example.scorpion.listviewdemo.model.utils.DisplayTool;
+import com.example.scorpion.listviewdemo.model.utils.ToastUtil;
 
 import java.util.List;
 
